@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Registration.Contracts;
+using Registration.Contracts.Registration;
 
 namespace Registration.Web.Controllers
 {
@@ -13,18 +11,62 @@ namespace Registration.Web.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public JsonResult UnRegister(string identityNumber)
         {
-            ViewBag.Message = "Your application description page.";
+            var response = new Result<Contracts.Registration.Registration>
+            {
+                Data = new Contracts.Registration.Registration
+                {
+                    
+                },
+                ResultCode = ResultCode.Success
+            };
+            // Unregister over REST
 
-            return View();
+            return this.Json(response, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Contact()
+        public JsonResult UnSubscribe(string identityNumber)
         {
-            ViewBag.Message = "Your contact page.";
+            var response = new Result<Contracts.Registration.Registration>
+            {
+                Data = new Contracts.Registration.Registration
+                {
 
-            return View();
+                },
+                ResultCode = ResultCode.Success
+            };
+            // Unsubscribe over REST
+
+            return this.Json(response, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetRegisteredStatus(string identityNumber)
+        {
+            var response = new Result<Status>
+            {
+                Data = Status.Registered,
+                ResultCode = ResultCode.Success
+            };
+            // Get status from REST service
+
+            return this.Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Register(RegistrationRequest request)
+        {
+            var response = new Result<Contracts.Registration.Registration>
+            {
+                Data = new Contracts.Registration.Registration
+                {
+
+                },
+                ResultCode = ResultCode.Success
+            };
+            // Get registration result
+
+            return this.Json(response, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

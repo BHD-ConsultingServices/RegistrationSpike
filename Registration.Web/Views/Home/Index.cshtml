@@ -1,31 +1,89 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div id="content">
+    
+    <div class="jumbotron transparentMuch">
+        <h1>'16 Color Fest</h1>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-offset-3 col-md-offset-3 col-sm-5 col-md-8 img-rounded content transparentSlight">
+            <h4 style="text-align: center">Please register below</h4>
+
+            <div class="row">
+                <div class="col-md-offset-1 col-md-4">Name:</div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-4">ID:</div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-4">Birthday:</div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-4">Subscribe to news</div>
+                <div class="col-md-6">
+                    <input type="checkbox" checked="checked" class="form-control" />
+                </div>
+            </div>
+            <hr/>
+            <div class="col-sm-offset-1 col-sm-11">
+                <input type="button" class="btn-info" value="Register" style="width: 100px" />
+
+            </div>
+        </div>
+            
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/knockout-3.4.0.js"></script>
+    <script type="text/javascript">
+
+
+        @{
+
+            var links = new
+            {
+                registerLink = @Url.Action("Register", "Home"),
+                unRegisterLink = @Url.Action("UnRegister", "Home"),
+                unSubscribe = @Url.Action("UnSubscribe", "Home"),
+                getRegisteredStatus = @Url.Action("GetRegisteredStatus", "Home")
+
+            };
+
+
+            var initialData = new
+            {
+                links = links
+            };
+    }
+
+
+
+        $().ready(function() {
+            site.page = site.pageFactory(@Html.Raw(Json.Encode(initialData)));
+        });
+
+
+
+
+    </script>
+}

@@ -5,5 +5,6 @@ namespace Registration.Contracts
     {
         public T Data { get; set; }
 
-        public ResultCode ResultCode { get; set; }    }
+        public ResultCode ResultCode { get; set; }
+    }
 }
