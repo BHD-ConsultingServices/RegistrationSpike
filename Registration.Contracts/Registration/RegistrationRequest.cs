@@ -9,5 +9,11 @@ namespace Registration.Contracts.Registration
     public class RegistrationRequest
     {
         public string IdentityNumber { get; set; }
+
+        public string Name { get; set; }
+
+        public DateTime BirthDay { get; set; }
+
+        public bool Subscribed { get; set; }
     }
 }

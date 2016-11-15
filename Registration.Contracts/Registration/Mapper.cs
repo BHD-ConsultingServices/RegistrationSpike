@@ -9,7 +9,13 @@ namespace Registration.Contracts.Registration
 
             return new RegistrationRequest
             {
-                IdentityNumber = original.IdentityNumber
+                IdentityNumber = original.IdentityNumber,
+
+                BirthDay = original.BirthDay,
+
+                Name = original.Name,
+
+                Subscribed = original.Subscribed
             };
         }
     }
