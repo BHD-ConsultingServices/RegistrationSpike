@@ -16,21 +16,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Registration Hackathon", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Standard Help", "Index", "Help", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Advanced help", "Index", "swagger", new { area = "" }, new {target = "_blank" })</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
+        <img src="http://britehouse.co.za/_catalogs/masterpage/Britehouse/images/Britehouse_Web.gif" class="img-responsive" />
+
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Britehouse Consulting - @Html.ActionLink("License","License","Home") </p>
         </footer>
     </div>
 

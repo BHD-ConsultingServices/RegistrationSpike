@@ -12,6 +12,11 @@ namespace Registration.API.Areas.HelpPage.Models
     public class HelpPageApiModel
     {
         /// <summary>
+        /// Gets or sets the response documentation.
+        /// </summary>
+        public string ResponseDocumentation { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="HelpPageApiModel"/> class.
         /// </summary>
         public HelpPageApiModel()

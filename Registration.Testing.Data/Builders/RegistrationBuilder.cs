@@ -13,21 +13,27 @@ namespace Registration.Testing.Data.Builders
 
         public RegistrationBuilder JohnDoe()
         {
-            this.IdentityNumber = "123456";
+
+            this.IdentityNumber = "8504065149076";
+            this.BirthDay = DateTime.Now.AddYears(-31);
+            this.Subscribed = true;
+
             return this;
         }
         
         public RegistrationBuilder JaneDoe()
         {
-            this.IdentityNumber = "123";
-            this.BirthDay = new DateTime(1987, 01, 01);
-            this.Name = "Jane Doe";
+
+            this.IdentityNumber = "9002045149077";
+            this.BirthDay = DateTime.Now.AddYears(-29);
             this.Subscribed = true;
+
             return this;
         }
 
 
-        public Contracts.Registration.Registration Build()
+
+        public Registration Build()
         {
             return this;
         }
