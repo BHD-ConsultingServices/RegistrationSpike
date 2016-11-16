@@ -243,6 +243,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\_Register.cshtml" />
+    <Content Include="Views\Home\_UnSubscribe.cshtml" />
+    <Content Include="Views\Home\_UnRegister.cshtml" />
+    <Content Include="Views\Home\_GetStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
