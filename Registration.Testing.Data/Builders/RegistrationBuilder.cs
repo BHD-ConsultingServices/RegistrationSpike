@@ -13,13 +13,16 @@ namespace Registration.Testing.Data.Builders
 
         public RegistrationBuilder JohnDoe()
         {
-
+            this.IdentityNumber = "123456";
             return this;
         }
-
+        
         public RegistrationBuilder JaneDoe()
         {
-
+            this.IdentityNumber = "123";
+            this.BirthDay = new DateTime(1987, 01, 01);
+            this.Name = "Jane Doe";
+            this.Subscribed = true;
             return this;
         }
 
@@ -32,6 +35,20 @@ namespace Registration.Testing.Data.Builders
         public RegistrationRequest BuildRequest()
         {
             return this.MapRequest();
+        }
+
+        public RegistrationRequest CreateAnError()
+        {
+            var mapped = this.MapRequest();
+            mapped.IdentityNumber = "error";
+            return mapped;
+        }
+
+        public RegistrationRequest RegisteredJohnDoe()
+        {
+            var mapped = this.MapRequest();
+            mapped.IdentityNumber = "registered";
+            return mapped;
         }
     }
 }

@@ -37,8 +37,29 @@ namespace Registration.Testing
             RegistrationWaldo.RegisterJohnDoe();
             var provider = ProviderFactory.CreateRegistrationProvider();
 
-            var response = provider.UnRegister(new RegistrationBuilder().JohnDoe().IdentityNumber);
+            var response = provider.Unsubscribe(new RegistrationBuilder().RegisteredJohnDoe().IdentityNumber);
             Assert.AreEqual(ResultCode.Success, response.ResultCode, "John Doe did not successfully un-subscribe for event news");
+        }
+
+        [TestMethod]
+        public void UserCannotUnSubscribeSucccessfullyTest()
+        {
+            RegistrationWaldo.RegisterJohnDoe();
+            var provider = ProviderFactory.CreateRegistrationProvider();
+
+            var response = provider.Unsubscribe(new RegistrationBuilder().CreateAnError().IdentityNumber);
+            Assert.AreEqual(ResultCode.Failure, response.ResultCode, "John Doe did not successfully un-subscribe for event news");
+        }
+
+        [TestMethod]
+        public void UnableVerifyUserRegisteredStatusSucccessfullyTest()
+        {
+            RegistrationWaldo.RegisterJohnDoe();
+            var provider = ProviderFactory.CreateRegistrationProvider();
+
+            var response = provider.GetRegisteredStatus(new RegistrationBuilder().JohnDoe().CreateAnError().IdentityNumber);
+            Assert.AreEqual(ResultCode.Failure, response.ResultCode, "Did not manage to retrieve John Doe's registered status");
+            Assert.AreEqual(Status.Undefined, response.Data, "Could not find any data");
         }
 
         [TestMethod]
@@ -47,7 +68,7 @@ namespace Registration.Testing
             RegistrationWaldo.RegisterJohnDoe();
             var provider = ProviderFactory.CreateRegistrationProvider();
 
-            var response = provider.GetRegisteredStatus(new RegistrationBuilder().JohnDoe().IdentityNumber);
+            var response = provider.GetRegisteredStatus(new RegistrationBuilder().RegisteredJohnDoe().IdentityNumber);
             Assert.AreEqual(ResultCode.Success, response.ResultCode, "Did not manage to retrieve John Doe's registered status");
             Assert.AreEqual(Status.Registered, response.Data, "John Doe should be registered");
         }

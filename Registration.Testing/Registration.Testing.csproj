@@ -35,7 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -56,6 +65,14 @@
     <Compile Include="DataGenerators\RegistrationWaldo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Registration.Adapters.Contracts\Registration.Adapters.Contracts.csproj">
+      <Project>{968c077a-ea5f-4003-8758-abea91590342}</Project>
+      <Name>Registration.Adapters.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Registration.Adapters\Registration.Adapters.csproj">
+      <Project>{1d079a85-5c05-452a-a3a1-806f8736ce52}</Project>
+      <Name>Registration.Adapters</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Registration.Contracts\Registration.Contracts.csproj">
       <Project>{2f86b4f6-03e0-454f-876c-7c00a053c3ca}</Project>
       <Name>Registration.Contracts</Name>
@@ -69,7 +86,10 @@
       <Name>Registration.Testing.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

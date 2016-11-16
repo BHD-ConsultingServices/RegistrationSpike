@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Mid Tier", "2. Mid Tier", "{AA798F61-3625-49A5-A90D-3AD68A4DD326}"
 EndProject
@@ -22,6 +22,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registration.API", "Registration.API\Registration.API.csproj", "{0E8980A5-9361-4E32-BB1D-649815A1F229}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registration.Contracts", "Registration.Contracts\Registration.Contracts.csproj", "{2F86B4F6-03E0-454F-876C-7C00A053C3CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registration.Adapters", "Registration.Adapters\Registration.Adapters.csproj", "{1D079A85-5C05-452A-A3A1-806F8736CE52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registration.Adapters.Contracts", "Registration.Adapters.Contracts\Registration.Adapters.Contracts.csproj", "{968C077A-EA5F-4003-8758-ABEA91590342}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,14 @@ Global
 		{2F86B4F6-03E0-454F-876C-7C00A053C3CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F86B4F6-03E0-454F-876C-7C00A053C3CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F86B4F6-03E0-454F-876C-7C00A053C3CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D079A85-5C05-452A-A3A1-806F8736CE52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D079A85-5C05-452A-A3A1-806F8736CE52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D079A85-5C05-452A-A3A1-806F8736CE52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D079A85-5C05-452A-A3A1-806F8736CE52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{968C077A-EA5F-4003-8758-ABEA91590342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{968C077A-EA5F-4003-8758-ABEA91590342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{968C077A-EA5F-4003-8758-ABEA91590342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{968C077A-EA5F-4003-8758-ABEA91590342}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +76,7 @@ Global
 		{C4AE1AA3-886F-4912-BD02-A65ADDDC4E4C} = {BFB3D249-B8E1-4382-A5E9-EA77FDAFE256}
 		{0E8980A5-9361-4E32-BB1D-649815A1F229} = {BFB3D249-B8E1-4382-A5E9-EA77FDAFE256}
 		{2F86B4F6-03E0-454F-876C-7C00A053C3CA} = {AA798F61-3625-49A5-A90D-3AD68A4DD326}
+		{1D079A85-5C05-452A-A3A1-806F8736CE52} = {74A79E6B-1B00-4F39-92B1-8A3F5BA4B75F}
+		{968C077A-EA5F-4003-8758-ABEA91590342} = {74A79E6B-1B00-4F39-92B1-8A3F5BA4B75F}
 	EndGlobalSection
 EndGlobal
