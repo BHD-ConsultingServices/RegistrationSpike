@@ -32,21 +32,6 @@ namespace Registration.Adapters.Stubs
                 }
             };
         }
-        
-        public Result<bool> IsIDNumberValid(string identityNumber)
-        {
-            if (identityNumber.ToLower().Trim() == "error")
-            {
-                return new Result<bool> { ResultCode = ResultCode.Failure };
-            }
-
-            if (identityNumber.ToLower().Trim() == "invalid")
-            {
-                return new Result<bool> { ResultCode = ResultCode.Success, Data = false };
-            }
-
-            return new Result<bool> { ResultCode = ResultCode.Success, Data = true };
-        }
 
         public Result<Registration> RegisterUser(RegistrationRequest request)
         {

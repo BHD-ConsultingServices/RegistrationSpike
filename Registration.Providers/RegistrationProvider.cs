@@ -15,7 +15,7 @@ namespace Registration.Providers
 
         public RegistrationProvider()
         {
-            this.adapter = new RegistrationAdapter();
+            this.adapter = AdapterFactory.CreateRegistrationAdapter();
         }
 
         public Result<Registration> Register(RegistrationRequest request)
@@ -29,13 +29,6 @@ namespace Registration.Providers
             
             if (registrationStatusOutcome.Data == Status.Registered)
             {
-                // var userOutcome = this.adapter.GetRegisteredUser(request.IdentityNumber);
-
-                //if (userOutcome.ResultCode == ResultCode.Failure)
-                //{
-                //    return new Result<Registration> { ResultCode = ResultCode.Failure };
-                //}
-
                 return new Result<Registration> { ResultCode =  ResultCode.Failure };
             }
 
