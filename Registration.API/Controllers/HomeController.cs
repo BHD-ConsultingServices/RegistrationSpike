@@ -10,8 +10,14 @@ namespace Registration.API.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Hackathon";
 
+            return View();
+        }
+
+        public ActionResult License()
+        {
+            ViewBag.Title = "License";
             return View();
         }
     }

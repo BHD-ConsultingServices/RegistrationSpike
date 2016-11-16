@@ -240,6 +240,7 @@ namespace Registration.API.Areas.HelpPage
             {
                 ApiDescription = apiDescription,
             };
+            
 
             ModelDescriptionGenerator modelGenerator = config.GetModelDescriptionGenerator();
             HelpPageSampleGenerator sampleGenerator = config.GetHelpPageSampleGenerator();
