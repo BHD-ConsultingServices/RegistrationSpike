@@ -527,5 +527,19 @@
             A registration result.
              </returns>
         </member>
+        <member name="T:Registration.API.ProviderFactory">
+            <summary>
+            A provider factory.
+            </summary>
+        </member>
+        <member name="M:Registration.API.ProviderFactory.GetInstance">
+            <summary>
+            Gets a provider instance.
+            </summary>
+            <param name="actual">true to actual.</param>
+            <returns>
+            The instance.
+            </returns>
+        </member>
     </members>
 </doc>

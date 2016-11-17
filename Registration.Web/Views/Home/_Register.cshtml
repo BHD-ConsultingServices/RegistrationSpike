@@ -1,0 +1,54 @@
+﻿
+
+<div class="row" data-bind="visible: currentState() == 'Register'">
+    <div class="col-sm-offset-3 col-md-offset-2 col-sm-5 col-md-8 img-rounded content transparentSlight">
+        <h4 style="text-align: center">Please register below</h4>
+
+        <div class="row">
+            <div class="col-md-offset-1 col-md-4">Name:</div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" data-bind="value: registerModel.name" />
+                <span class="error" data-bind="text: registerModel.name.message"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-4">Identity Number:</div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" data-bind="value: registerModel.identityNumber" />
+                <span class="error" data-bind="text: registerModel.identityNumber.message"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-4">Birthday:</div>
+            <div class="col-md-6">
+                <div class="input-group date">
+                    <input id="birthday" type="text" class="form-control" data-bind="datepicker: registerModel.birthDay" />
+                    <span class="input-group-addon" style="width: 20px">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    <span class="error" data-bind="text: registerModel.birthDay.message"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-4">Email:</div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" data-bind="value: registerModel.email" />
+                <span class="error" data-bind="text: registerModel.email.message"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-4">Subscribe to news</div>
+            <div class="col-md-6">
+                <input type="checkbox" checked="checked" class="form-control" data-bind="value: registerModel.isSubscribed" />
+            </div>
+        </div>
+        <hr />
+        <div class="col-sm-offset-1 col-sm-11">
+            <input type="button" class="btn-info" value="Register" data-bind="click: register" style="width: 100px" />
+            <span data-bind="text: message" class="message"></span>
+        </div>
+    </div>
+
+</div>
+

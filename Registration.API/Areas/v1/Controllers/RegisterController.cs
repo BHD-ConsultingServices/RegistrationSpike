@@ -1,14 +1,11 @@
 ﻿// <copyright file="RegisterController.cs">
 // </copyright>
 // <summary>Implements the register controller class</summary>
-using Contracts = Registration.Contracts.Registration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
 using Registration.Contracts;
+using Registration.Providers;
+using Registration.Providers.Stubs;
+using System;
+using System.Web.Http;
 
 namespace Registration.API.Areas.v1.Controllers
 {
@@ -29,7 +26,10 @@ namespace Registration.API.Areas.v1.Controllers
         [Route("addnew")]
         public Result<Contracts.Registration.Registration> Register(Contracts.Registration.RegistrationRequest request)
         {
-            throw new NotImplementedException();
+            var provider = ProviderFactory.GetInstance();
+            var result = provider.Register(request);
+            return result;
+            //throw new NotImplementedException("Not implemented, this is your chance to complete the missing codeblocks");
         }
 
         /// <summary>
@@ -43,7 +43,9 @@ namespace Registration.API.Areas.v1.Controllers
         [Route("status/{identityNumber}")]
         public Result<Contracts.Registration.Status> GetRegisteredStatus(string identityNumber)
         {
-            throw new NotImplementedException();
+            var provider = ProviderFactory.GetInstance();
+            var result = provider.GetRegisteredStatus(identityNumber);
+            return result;
         }
 
         /// <summary>
@@ -57,7 +59,9 @@ namespace Registration.API.Areas.v1.Controllers
         [Route("unsubscribe/{identityNumber}")]
         public Result<Contracts.Registration.Registration> Unsubscribe(string identityNumber)
         {
-            throw new NotImplementedException();
+            var provider = ProviderFactory.GetInstance();
+            var result = provider.Unsubscribe(identityNumber);
+            return result;
         }
 
         /// <summary>
@@ -71,7 +75,7 @@ namespace Registration.API.Areas.v1.Controllers
         [Route("unregister/{identityNumber}")]
         public Result<Contracts.Registration.Registration> UnRegister(string identityNumber)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Not implemented, this is your chance to complete the missing codeblocks");
         }
     }
 }

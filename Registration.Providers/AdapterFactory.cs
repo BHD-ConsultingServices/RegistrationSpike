@@ -7,6 +7,7 @@ namespace Registration.Providers
 
     public class AdapterFactory
     {
+
         public static IRegistrationAdapter CreateRegistrationAdapter(bool useStubs = false)
         {
             if (useStubs)

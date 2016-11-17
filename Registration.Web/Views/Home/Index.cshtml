@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Registration.Web.Models.BaseModel
+@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -6,84 +7,50 @@
 <div id="content">
     
     <div class="jumbotron transparentMuch">
-        <h1>'17 Color Fest</h1>
+        <div class="menu">
+            <a data-bind="click: changePerspective.bind($data, 'Register')">Register</a> | 
+            <a data-bind="click: changePerspective.bind($data, 'GetStatus')">Get Status</a> |
+            <a data-bind="click: changePerspective.bind($data, 'UnRegister')">Un-Register</a> | 
+            <a data-bind="click: changePerspective.bind($data, 'UnSubscribe')">Un-Subscribe</a>
+        </div>
+
+        <h1><span style="color: #f58621; font-size: 1.3em">Col</span><span style="color: #36980c; font-size: 1.3em"s>or</span> Fest <span style="font-style: italic; font-size: 0.8em">'17</span> </h1>
     </div>
     
-    <div class="row">
-        <div class="col-sm-offset-3 col-md-offset-2 col-sm-5 col-md-8 img-rounded content transparentSlight">
-            <h4 style="text-align: center">Please register below</h4>
+    @Html.Partial("_Register");
+    @Html.Partial("_GetStatus");
+    @Html.Partial("_UnRegister");
+    @Html.Partial("_UnSubscribe");
 
-            <div class="row">
-                <div class="col-md-offset-1 col-md-4">Name:</div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-offset-1 col-md-4">ID:</div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-offset-1 col-md-4">Birthday:</div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-offset-1 col-md-4">Subscribe to news</div>
-                <div class="col-md-6">
-                    <input type="checkbox" checked="checked" class="form-control" />
-                </div>
-            </div>
-            <hr/>
-            <div class="col-sm-offset-1 col-sm-11">
-                <input type="button" class="btn-info" value="Register" style="width: 100px" />
-
-            </div>
-        </div>
-            
-    </div>
 </div>
-
-
-
-
-
 
 @section scripts
 {
-    <script src="~/Scripts/knockout-3.4.0.js"></script>
     <script type="text/javascript">
-
-
+        
         @{
-
+         
             var links = new
             {
-                registerLink = @Url.Action("Register", "Home"),
-                unRegisterLink = @Url.Action("UnRegister", "Home"),
-                unSubscribe = @Url.Action("UnSubscribe", "Home"),
-                getRegisteredStatus = @Url.Action("GetRegisteredStatus", "Home")
-
+                registerLink = $"{Model.BaseApiUrl}/api/v1/register/addnew",
+                unRegisterLink = $"{Model.BaseApiUrl}/api/v1/register/unregister/",
+                unSubscribe = $"{Model.BaseApiUrl}/api/v1/register/unsubscribe/",
+                getRegisteredStatus = $"{Model.BaseApiUrl}/api/v1/register/status/"
             };
-
 
             var initialData = new
             {
                 links = links
             };
-    }
+        }
 
 
 
         $().ready(function() {
             site.page = site.pageFactory(@Html.Raw(Json.Encode(initialData)));
+
+            ko.applyBindings(site.page.viewModel);
         });
-
-
-
 
     </script>
 }
