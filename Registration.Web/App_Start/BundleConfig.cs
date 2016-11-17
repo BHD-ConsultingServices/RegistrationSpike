@@ -20,11 +20,22 @@ namespace Registration.Web
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/moment.min.js",
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap-datetimepicker.min.js",
                       "~/Scripts/respond.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                 "~/Scripts/knockout-3.4.0.js",
+                 "~/Scripts/toastr.min.js",
+                 "~/Scripts/validation.js",
+                 "~/scripts/common.js"));
+            
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-datetimepicker.css",
+                      "~/Content/toastr.min.css",
                       "~/Content/site.css"));
         }
     }

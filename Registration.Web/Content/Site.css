@@ -80,3 +80,10 @@ footer p {
     padding-left: 10px;
     font-style: italic;
 }
+
+.datePicker {
+    width: 80%; 
+    max-width: 200px;
+    margin-right: 3px;
+    float: left;
+}

@@ -1,12 +1,66 @@
-﻿site = function () {
+﻿var ToastTypeEnum = { Default: "info", Info: "info", Warning: "warning", Success: "success", Error: "error" };
+
+site = function () {
     var page = {}
     var common = {}
     var ajax = {}
+    var notifications = {}
 
     return {
         page: page,
         common: common,
-        ajax: ajax
+        ajax: ajax,
+        notifications: notifications
+    }
+}();
+
+site.notifications = function() {
+    var toast = (function () {
+        var settingsApplied = false;
+
+        var applySettings = function () {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            settingsApplied = true;
+        };
+
+        var show = function (message, toastTypeEnum) {
+            if (!settingsApplied) {
+                applySettings();
+            }
+
+            toastRef = toastr[toastTypeEnum](message, null);
+
+        };
+
+        var clear = function () {
+            toastr.clear();
+        };
+
+        return {
+            show: show,
+            clear: clear
+        };
+    })();
+
+
+    return {
+        toast: toast
     }
 }();
 

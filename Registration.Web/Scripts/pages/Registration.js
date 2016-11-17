@@ -16,7 +16,8 @@ site.pageFactory = function (initialData) {
                 IdentityNumber: identityNumber,
                 Name: name,
                 Birthday: birthDay,
-                Subscribed: isSubscribed
+                Subscribed: isSubscribed,
+                Email: email
             }
         }
 
@@ -50,8 +51,8 @@ site.pageFactory = function (initialData) {
                 ResultCode: resultCodeEnum.Success,
                 Data: {
                     Id: "BB64220E-5E11-49F1-8046-2400D8212B3E",
-                    IdentityNumber: parameters.IdentityNumber,
-                    Name: parameters.Name,
+                    IdentityNumber: "8504065149076",
+                    Name: "John Doe",
                     BirthDay: new Date(),
                     Subscribed: true
                 }
@@ -65,8 +66,8 @@ site.pageFactory = function (initialData) {
                 ResultCode: resultCodeEnum.Success,
                 Data: {
                     Id: "BB64220E-5E11-49F1-8046-2400D8212B3E",
-                    IdentityNumber: parameters.IdentityNumber,
-                    Name: parameters.Name,
+                    IdentityNumber: "9002045149077",
+                    Name: "Jane Doe",
                     BirthDay: new Date(),
                     Subscribed: true
                 }
@@ -76,10 +77,9 @@ site.pageFactory = function (initialData) {
         }
 
         var getRegisteredStateStub = function (parameters, onSuccess) {
-            debugger;
             var response = {
                 ResultCode: resultCodeEnum.Success,
-                Data: statusEnum.Success
+                Data: statusEnum.Registered
             }
 
             onSuccess(response);
@@ -132,31 +132,51 @@ site.pageFactory = function (initialData) {
         }();
 
         var changePerspective = function (state) {
-            console.log("Changing the state");
-            console.log(state);
             message(undefined);
 
             currentState(state);
         }
 
+        var displayResultMessage = function (operation, resultCode) {
+            var msg;
+
+            if (resultCode === resultCodeEnum.Success) {
+                msg = "Successfully " + operation;
+                message(msg);
+                site.notifications.toast.show(msg, ToastTypeEnum.Success);
+            } else {
+                msg = "Unable to " + operation;
+                message(msg);
+                site.notifications.toast.show(msg, ToastTypeEnum.Error);
+            }
+        }
+
         var registerOnSuccess = function (jsonResult) {
             console.log("Register Completed");
             console.log(jsonResult);
+
+            displayResultMessage("register for colour fest", jsonResult.ResultCode);
         }
 
         var unSubscribeSuccess = function (jsonResult) {
             console.log("Un-Subscribe Completed");
             console.log(jsonResult);
+
+            displayResultMessage("Un-Subscribe for event information", jsonResult.ResultCode);
         }
 
         var unRegisterSuccess = function (jsonResult) {
             console.log("Un-Register Completed");
             console.log(jsonResult);
+
+            displayResultMessage("Un-Register for colouur fest", jsonResult.ResultCode);
         }
 
         var getRegisteredStateSuccess = function (jsonResult) {
             console.log("Get registered state Completed");
             console.log(jsonResult);
+
+            displayResultMessage("retrieved the registered status", jsonResult.ResultCode);
         }
 
         var register = function () {
@@ -182,6 +202,7 @@ site.pageFactory = function (initialData) {
 
         var getRegisteredStatus = function() {
             var parameters = objectFactory.getIdentityServerModel(registerModel.identityNumber());
+            console.log(parameters);
             dal.getRegisteredState(parameters, getRegisteredStateSuccess);
         }
         
