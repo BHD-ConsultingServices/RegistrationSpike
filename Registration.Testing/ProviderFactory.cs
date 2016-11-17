@@ -10,7 +10,7 @@ namespace Registration.Testing
 
     public class ProviderFactory
     {
-        public static bool ShouldUseStubs = true;
+        public static bool ShouldUseStubs = false;
 
         public static IRegistrationProvider CreateRegistrationProvider()
         {

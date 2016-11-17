@@ -56,7 +56,7 @@ namespace Registration.Providers
 
             var communicationTemplateOutcome = this.communicationTemplates.BuildSuccessfulRegistrationTemplate(request.Name);
 
-            var sendEmailOutcome = this.communucationAdapter.SendEmail(request.EmailAddress, "Registration", communicationTemplateOutcome);
+            var sendEmailOutcome = this.communucationAdapter.SendEmail(request.Email, "Registration", communicationTemplateOutcome);
 
             if (sendEmailOutcome == ResultCode.Failure)
             {
@@ -88,9 +88,9 @@ namespace Registration.Providers
                 return statusOutcome;
             }
 
-            var communicationTemplateOutcome = this.communicationTemplates.BuildUnSubscribeEmail(statusOutcome.Data.Name, statusOutcome.Data.EmailAddress);
+            var communicationTemplateOutcome = this.communicationTemplates.BuildUnSubscribeEmail(statusOutcome.Data.Name, statusOutcome.Data.Email);
 
-            var sendEmailOutcome = this.communucationAdapter.SendEmail(statusOutcome.Data.EmailAddress, "Unsubscribe", communicationTemplateOutcome);
+            var sendEmailOutcome = this.communucationAdapter.SendEmail(statusOutcome.Data.Email, "Unsubscribe", communicationTemplateOutcome);
 
             if (sendEmailOutcome != ResultCode.Success)
             {
@@ -111,7 +111,7 @@ namespace Registration.Providers
 
             var communicationTemplateOutcome = this.communicationTemplates.BuildUnRegisterTemplate(unRegisteredOutcome.Data.Name);
 
-            var sendEmailOutcome = this.communucationAdapter.SendEmail(unRegisteredOutcome.Data.EmailAddress, "UnRegistered", communicationTemplateOutcome);
+            var sendEmailOutcome = this.communucationAdapter.SendEmail(unRegisteredOutcome.Data.Email, "UnRegistered", communicationTemplateOutcome);
 
             if (sendEmailOutcome != ResultCode.Success)
             {

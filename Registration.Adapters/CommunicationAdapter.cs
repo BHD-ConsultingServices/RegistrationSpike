@@ -16,8 +16,8 @@ namespace Registration.Adapters
     {
         public ResultCode SendEmail(string toAddress, string subject, string body)
         {
-            var server = Settings.Default.smtpServer;
-            var port = Settings.Default.smptPort;
+            var server = "127.0.0.1";// Settings.Default.smtpServer;
+            var port = 25; // Settings.Default.smptPort;
 
             var client = new SmtpClient(server, port);
             var mail = new MailMessage("admin@colorEvents.co.za", toAddress, subject, body);

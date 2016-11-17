@@ -15,7 +15,7 @@ namespace Registration.Contracts.Registration
 
         public bool Subscribed { get; set; }
 
-        public string EmailAddress { get; set; }
+        public string Email { get; set; }
 
         public Status RegistrationStatus { get; set; }
     }

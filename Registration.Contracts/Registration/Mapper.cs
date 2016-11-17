@@ -17,7 +17,7 @@ namespace Registration.Contracts.Registration
 
                 Subscribed = original.Subscribed,
 
-                EmailAddress = original.EmailAddress
+                Email = original.Email
             };
         }
     }
