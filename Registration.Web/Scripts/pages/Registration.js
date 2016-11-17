@@ -1,9 +1,9 @@
 ﻿var screenEnum = { Register: "Register", GetStatus: "GetStatus", UnRegister: "UnRegister", UnSubscribe: "UnSubscribe" }
 var resultCodeEnum = { Undefined: 0, Success: 1, PartialSuccess: 2, Failure: 3 }
-var statusEnum = { Undefined: 0, Registered: 1, UnRegistered: 2}
+var statusEnum = { Undefined: 0, Registered: 1, UnRegistered: 2 }
 
 site.pageFactory = function (initialData) {
-    var objectFactory = function() {
+    var objectFactory = function () {
         var getIdentityServerModel = function (identityNumber) {
             return {
                 identityNumber: identityNumber
@@ -25,14 +25,14 @@ site.pageFactory = function (initialData) {
             getRegisterServerModel: getRegisterServerModel
         }
     }();
-    
+
     var dal = function (links) {
         var useStubs = false;
 
         var registerStub = function (parameters, onSuccess) {
             console.log("Register Request:");
             console.log(parameters);
- 
+
             var response = {
                 ResultCode: resultCodeEnum.Success,
                 Data: {
@@ -94,26 +94,26 @@ site.pageFactory = function (initialData) {
 
             onSuccess(response);
         }
-        
+
         var register = function (parameters, onSuccess) {
             var url = links.registerLink;
 
             site.ajax.ajaxPost(parameters, url, onSuccess);
         }
-      
+
         var unRegister = function (parameters, onSuccess) {
             var url = links.unRegisterLink + parameters.identityNumber;
-            site.ajax.ajaxGet({}, url, onSuccess);
+            site.ajax.ajaxPost({}, url, onSuccess);
         }
 
         var unSubscribe = function (parameters, onSuccess) {
             var url = links.unSubscribe + parameters.identityNumber;
-            site.ajax.ajaxGet({}, url, onSuccess);
+            site.ajax.ajaxPost({}, url, onSuccess);
         }
 
         var getRegisteredState = function (parameters, onSuccess) {
             var url = links.getRegisteredStatus + parameters.identityNumber;
-            site.ajax.ajaxGet({}, url, onSuccess);
+            site.ajax.ajaxGet(url, onSuccess);
         }
 
         return {
@@ -124,14 +124,14 @@ site.pageFactory = function (initialData) {
         }
     }(initialData.links);
 
-    var viewModel = function() {
+    var viewModel = function () {
         var currentState = ko.observable(screenEnum.Register);
         var message = ko.observable(undefined);
         var groupRegister = "RegisterGroup";
 
         var registerModel = new function () {
             var futureDateOptions = $.validation.createConditionalDateParameter(false, true, null, "Date must be in past", groupRegister);
-            
+
             var identityNumber = ko.observable(undefined).extend({ mandatory: groupRegister });;
             var birthDay = ko.observable(undefined).extend({ mandatory: groupRegister, date: groupRegister, conditionalDate: futureDateOptions });
             var name = ko.observable(undefined).extend({ mandatory: groupRegister });
@@ -191,7 +191,7 @@ site.pageFactory = function (initialData) {
             console.log(jsonResult);
 
             displayResultMessage("register for colour fest", jsonResult.ResultCode);
-            
+
             if (jsonResult.ResultCode === resultCodeEnum.Success) {
                 clearForm();
             }
@@ -213,7 +213,7 @@ site.pageFactory = function (initialData) {
             console.log(jsonResult);
 
             displayResultMessage("Un-Register for colouur fest", jsonResult.ResultCode);
-           
+
             if (jsonResult.ResultCode === resultCodeEnum.Success) {
                 clearForm();
             }
@@ -236,7 +236,7 @@ site.pageFactory = function (initialData) {
             if (!$.validation.validateGroup(groupRegister)) {
                 return;
             }
-            
+
             var parameters = objectFactory.getRegisterServerModel(
                 registerModel.identityNumber(),
                 registerModel.name(),
@@ -247,22 +247,22 @@ site.pageFactory = function (initialData) {
             dal.register(parameters, registerOnSuccess);
         }
 
-        var unSubscribe = function() {
+        var unSubscribe = function () {
             var parameters = objectFactory.getIdentityServerModel(registerModel.identityNumber());
             dal.unSubscribe(parameters, unSubscribeSuccess);
         }
 
-        var unRegister = function() {
+        var unRegister = function () {
             var parameters = objectFactory.getIdentityServerModel(registerModel.identityNumber());
             dal.unRegister(parameters, unRegisterSuccess);
         }
 
-        var getRegisteredStatus = function() {
+        var getRegisteredStatus = function () {
             var parameters = objectFactory.getIdentityServerModel(registerModel.identityNumber());
             console.log(parameters);
             dal.getRegisteredState(parameters, getRegisteredStateSuccess);
         }
-        
+
         return {
             currentState: currentState,
             registerModel: registerModel,
@@ -275,7 +275,7 @@ site.pageFactory = function (initialData) {
             allowIdOperations: allowIdOperations
         }
     }();
-    
+
     return {
         viewModel: viewModel
     }

@@ -55,7 +55,7 @@ namespace Registration.API.Areas.v1.Controllers
         /// <returns>
         /// A registration result.
         /// </returns>
-        [HttpPut]
+        [HttpPost]
         [Route("unsubscribe/{identityNumber}")]
         public Result<Contracts.Registration.Registration> Unsubscribe(string identityNumber)
         {
@@ -71,11 +71,13 @@ namespace Registration.API.Areas.v1.Controllers
         /// <returns>
         ///A registration result.
         /// </returns>
-        [HttpPut]
+        [HttpPost]
         [Route("unregister/{identityNumber}")]
         public Result<Contracts.Registration.Registration> UnRegister(string identityNumber)
         {
-            throw new NotImplementedException("Not implemented, this is your chance to complete the missing codeblocks");
+            var provider = ProviderFactory.GetInstance();
+            var result = provider.UnRegister(identityNumber);
+            return result;
         }
     }
 }

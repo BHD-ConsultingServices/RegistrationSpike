@@ -145,6 +145,24 @@ site.ajax = function () {
         });
     };
 
+    var ajaxPut = function (data, url, successHandler, errorHandler) {
+        var successCallback = generateSuccessHandler(successHandler, url);
+        var errorCallback = generateErrorHandler(errorHandler, url);
+
+        $.ajax({
+            type: "PUT",
+            url: url,
+            data: JSON.stringify(data),
+            success: successCallback,
+            /* xhrFields: {
+                withCredentials: true
+            }, */
+            error: errorCallback,
+            dataType: "json",
+            contentType: "application/json;charset=utf-8"
+        });
+    };
+
     var ajaxPostHtml = function (data, url, successHandler, errorHandler) {
         var successCallback = generateSuccessHandler(successHandler, url);
         var errorCallback = generateErrorHandler(errorHandler, url);
@@ -163,6 +181,7 @@ site.ajax = function () {
     return {
         ajaxGet: ajaxGet,
         ajaxPost: ajaxPost,
+        ajaxPut: ajaxPut,
         ajaxPostHtml: ajaxPostHtml
     }
 }();
