@@ -24,6 +24,7 @@ namespace Registration.Adapters
 
             mail.Subject = subject;
             mail.Body = body;
+            mail.IsBodyHtml = true;
 
             client.Send(mail);
 

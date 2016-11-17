@@ -111,7 +111,7 @@ namespace Registration.Providers
 
             var communicationTemplateOutcome = this.communicationTemplates.BuildUnRegisterTemplate(unRegisteredOutcome.Data.Name);
 
-            var sendEmailOutcome = this.communucationAdapter.SendEmail(unRegisteredOutcome.Data.Email, "UnRegistered", communicationTemplateOutcome);
+            var sendEmailOutcome = this.communucationAdapter.SendEmail(unRegisteredOutcome.Data.Email, "De-Registered", communicationTemplateOutcome);
 
             if (sendEmailOutcome != ResultCode.Success)
             {
