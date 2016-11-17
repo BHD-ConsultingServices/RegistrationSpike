@@ -74,17 +74,13 @@ namespace Registration.Testing
         }
 
         [TestMethod]
-        public void RegisterUserSendEmailSuccessfullyTest()
-        {
-            // Ensure that the unit test passed for sending an email after registration.
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
         public void UnSubscribeSendEmailSuccessfullyTest()
         {
-            // ensure that the unit test passes for sending an email after a successful unsubscription. 
-            throw new NotImplementedException();
+            RegistrationWaldo.RegisterJohnDoe();
+            var provider = ProviderFactory.CreateRegistrationProvider();
+
+            var response = provider.Unsubscribe(new RegistrationBuilder().CreateAnError().IdentityNumber);
+            Assert.AreEqual(ResultCode.Failure, response.ResultCode, "John Doe did not successfully un-subscribe for event news");
         }
     }
 }

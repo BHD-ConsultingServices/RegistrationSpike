@@ -8,11 +8,25 @@ namespace Registration.Providers.Stubs
     using Adapters.Contracts;
     public class RegistrationProviderStub : IRegistrationProvider
     {
+        /// <summary>
+        /// The adapter
+        /// </summary>
         private readonly IRegistrationAdapter adapter;
 
+        /// <summary>
+        /// The communucation adapter
+        /// </summary>
+        private readonly ICommunicationAdapter communucationAdapter;
+
+        /// <summary>
+        /// The communication templates
+        /// </summary>
+        private readonly ICommunicationTemplates communicationTemplates;
         public RegistrationProviderStub()
         {
             this.adapter = AdapterFactory.CreateRegistrationAdapter(true);
+            this.communucationAdapter = AdapterFactory.CreateComminucationAdapterInstance();
+            this.communicationTemplates = AdapterFactory.CreateComminucationtemplatesInstance();
         }
 
         public Result<Registration> Register(RegistrationRequest request)
@@ -59,7 +73,23 @@ namespace Registration.Providers.Stubs
 
         public Result<Registration> UnRegister(string identityNumber)
         {
-            throw new NotImplementedException();
+            var unRegisteredOutcome = this.adapter.UnRegister(identityNumber);
+
+            if (unRegisteredOutcome.ResultCode != ResultCode.Success)
+            {
+                return unRegisteredOutcome;
+            }
+
+            var communicationTemplateOutcome = this.communicationTemplates.BuildUnRegisterTemplate(unRegisteredOutcome.Data.Name);
+
+            var sendEmailOutcome = this.communucationAdapter.SendEmail(unRegisteredOutcome.Data.Email, "UnRegistered", communicationTemplateOutcome);
+
+            if (sendEmailOutcome != ResultCode.Success)
+            {
+                return new Result<Registration> { ResultCode = ResultCode.PartialSuccess, Data = unRegisteredOutcome.Data };
+            }
+
+            return unRegisteredOutcome;
         }
     }
 }

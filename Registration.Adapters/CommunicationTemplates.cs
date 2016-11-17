@@ -45,7 +45,7 @@ namespace Registration.Adapters
 
             templateBuilder.Append($"Hello {name}");
             templateBuilder.Append("\n\n");
-            templateBuilder.Append("You have unsubscribed successfully. How said. You will no longer receive regular news letters.");
+            templateBuilder.Append("You have unsubscribed successfully. How sad. You will no longer receive regular news letters.");
             templateBuilder.Append("\n\n");
             templateBuilder.Append("Regards");
             templateBuilder.Append("Buddy");

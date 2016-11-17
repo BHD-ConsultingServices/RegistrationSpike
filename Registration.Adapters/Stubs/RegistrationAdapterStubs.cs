@@ -27,6 +27,7 @@ namespace Registration.Adapters.Stubs
                     Id = Guid.NewGuid(),
                     IdentityNumber = "123456",
                     Name = "John Doe",
+                    Email = "test@email.com",
                     BirthDay = new DateTime(1991, 5, 6),
                     Subscribed = true
                 }
@@ -48,6 +49,7 @@ namespace Registration.Adapters.Stubs
                     Id = Guid.NewGuid(),
                     IdentityNumber = "123456",
                     Name = "John Doe",
+                    Email = "test@email.com",
                     BirthDay = new DateTime(1991, 5, 6),
                     Subscribed = true
                 }
@@ -88,6 +90,7 @@ namespace Registration.Adapters.Stubs
                     Id = Guid.NewGuid(),
                     IdentityNumber = "123456",
                     Name = "John Doe",
+                    Email = "test@email.com",
                     BirthDay = new DateTime(1991, 5, 6),
                     Subscribed = true
                 }
@@ -114,6 +117,7 @@ namespace Registration.Adapters.Stubs
                     Id = Guid.NewGuid(),
                     IdentityNumber = "123456",
                     Name = "John Doe",
+                    Email = "test@email.com",
                     BirthDay = new DateTime(1991, 5, 6),
                     Subscribed = true
                 }
