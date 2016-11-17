@@ -81,9 +81,23 @@ footer p {
     font-style: italic;
 }
 
-.datePicker {
-    width: 80%; 
-    max-width: 200px;
-    margin-right: 3px;
-    float: left;
+input.error, select.error  {
+	background-color: #F5E3D7;
+	color: #383432;
+	font-weight: normal;
+	font-size: 1em;	
+}
+
+.error {
+	color: red;
+	font-size: 0.8em;	
+	font-weight: italic;
+}
+
+.feedback {
+	color: blue;
+}
+
+input.form-control[data-bind^="date"] {
+    background-color: #fff;
 }

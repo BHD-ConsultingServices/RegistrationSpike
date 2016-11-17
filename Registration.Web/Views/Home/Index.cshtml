@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Registration.Web.Models.BaseModel
+@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -23,29 +24,25 @@
 
 </div>
 
-
 @section scripts
 {
     <script type="text/javascript">
-
-
+        
         @{
-
+         
             var links = new
             {
-                registerLink = @Url.Action("Register", "Home"),
-                unRegisterLink = @Url.Action("UnRegister", "Home"),
-                unSubscribe = @Url.Action("UnSubscribe", "Home"),
-                getRegisteredStatus = @Url.Action("GetRegisteredStatus", "Home")
-
+                registerLink = $"{Model.BaseApiUrl}/api/v1/register/addnew",
+                unRegisterLink = $"{Model.BaseApiUrl}/api/v1/register/unregister/",
+                unSubscribe = $"{Model.BaseApiUrl}/api/v1/register/unsubscribe/",
+                getRegisteredStatus = $"{Model.BaseApiUrl}/api/v1/register/status/"
             };
-
 
             var initialData = new
             {
                 links = links
             };
-    }
+        }
 
 
 
@@ -54,9 +51,6 @@
 
             ko.applyBindings(site.page.viewModel);
         });
-
-
-
 
     </script>
 }
