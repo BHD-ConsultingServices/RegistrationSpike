@@ -14,5 +14,7 @@ namespace Registration.Contracts.Registration
         public DateTime BirthDay { get; set; }
 
         public bool Subscribed { get; set; }
+
+        public string EmailAddress { get; set; }
     }
 }

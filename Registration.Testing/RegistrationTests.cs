@@ -7,7 +7,7 @@ namespace Registration.Testing
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Contracts;
     using Data.Builders;
-
+    using System;
     [TestClass]
     public class RegistrationTests
     {
@@ -73,5 +73,18 @@ namespace Registration.Testing
             Assert.AreEqual(Status.Registered, response.Data, "John Doe should be registered");
         }
 
+        [TestMethod]
+        public void RegisterUserSendEmailSuccessfullyTest()
+        {
+            // Ensure that the unit test passed for sending an email after registration.
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void UnSubscribeSendEmailSuccessfullyTest()
+        {
+            // ensure that the unit test passes for sending an email after a successful unsubscription. 
+            throw new NotImplementedException();
+        }
     }
 }

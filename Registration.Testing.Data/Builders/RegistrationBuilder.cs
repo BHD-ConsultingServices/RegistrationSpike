@@ -31,8 +31,6 @@ namespace Registration.Testing.Data.Builders
             return this;
         }
 
-
-
         public Registration Build()
         {
             return this;
