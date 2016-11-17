@@ -27,7 +27,7 @@ site.pageFactory = function (initialData) {
     }();
     
     var dal = function (links) {
-        var useStubs = true;
+        var useStubs = false;
 
         var registerStub = function (parameters, onSuccess) {
             console.log("Register Request:");
