@@ -12,28 +12,28 @@ namespace Registration.API.Areas.v1.Controllers
     /// <summary>
     /// A controller for handling new registrations.
     /// </summary>
-    [RoutePrefix("api/v1/register")]
+    [RoutePrefix("api/v1/registration")]
     public class RegisterController : ApiController
     {
         /// <summary>
-        /// Creates a new registration record.
+        /// Creates a new registration request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>
         /// A registration result.
         /// </returns>
         [HttpPost]
-        [Route("addnew")]
+        [Route("register")]
         public Result<Contracts.Registration.Registration> Register(Contracts.Registration.RegistrationRequest request)
         {
             var provider = ProviderFactory.GetInstance();
             var result = provider.Register(request);
+
             return result;
-            //throw new NotImplementedException("Not implemented, this is your chance to complete the missing codeblocks");
         }
 
         /// <summary>
-        /// Gets the registration status using identification number.
+        /// Retrieves the registration status of a specific identity number.
         /// </summary>
         /// <param name="identityNumber">The identity number.</param>
         /// <returns>
@@ -49,7 +49,7 @@ namespace Registration.API.Areas.v1.Controllers
         }
 
         /// <summary>
-        /// Unsubscribes a registration from the service using its identification number.
+        /// Unsubscribes a registered identity number.
         /// </summary>
         /// <param name="identityNumber">The identity number.</param>
         /// <returns>
@@ -65,7 +65,7 @@ namespace Registration.API.Areas.v1.Controllers
         }
 
         /// <summary>
-        /// Unregisteres a registration from the service using its identification number.
+        /// Un-registers a specific identity number.
         /// </summary>
         /// <param name="identityNumber">The identity number.</param>
         /// <returns>

@@ -493,7 +493,7 @@
         </member>
         <member name="M:Registration.API.Areas.v1.Controllers.RegisterController.Register(Registration.Contracts.Registration.RegistrationRequest)">
             <summary>
-            Creates a new registration record.
+            Creates a new registration request.
             </summary>
             <param name="request">The request.</param>
             <returns>
@@ -502,7 +502,7 @@
         </member>
         <member name="M:Registration.API.Areas.v1.Controllers.RegisterController.GetRegisteredStatus(System.String)">
             <summary>
-            Gets the registration status using identification number.
+            Retrieves the registration status of a specific identity number.
             </summary>
             <param name="identityNumber">The identity number.</param>
             <returns>
@@ -511,7 +511,7 @@
         </member>
         <member name="M:Registration.API.Areas.v1.Controllers.RegisterController.Unsubscribe(System.String)">
             <summary>
-            Unsubscribes a registration from the service using its identification number.
+            Unsubscribes a registered identity number.
             </summary>
             <param name="identityNumber">The identity number.</param>
             <returns>
@@ -520,7 +520,7 @@
         </member>
         <member name="M:Registration.API.Areas.v1.Controllers.RegisterController.UnRegister(System.String)">
              <summary>
-             Unregisteres a registration from the service using its identification number.
+             Un-registers a specific identity number.
              </summary>
              <param name="identityNumber">The identity number.</param>
              <returns>
