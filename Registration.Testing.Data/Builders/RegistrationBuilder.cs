@@ -15,6 +15,7 @@ namespace Registration.Testing.Data.Builders
         {
 
             this.IdentityNumber = "8504065149076";
+            this.EmailAddress = "johndoe@test.com";
             this.BirthDay = DateTime.Now.AddYears(-31);
             this.Subscribed = true;
 
@@ -25,6 +26,7 @@ namespace Registration.Testing.Data.Builders
         {
 
             this.IdentityNumber = "9002045149077";
+            this.EmailAddress = "janedoe@test.com";
             this.BirthDay = DateTime.Now.AddYears(-29);
             this.Subscribed = true;
 

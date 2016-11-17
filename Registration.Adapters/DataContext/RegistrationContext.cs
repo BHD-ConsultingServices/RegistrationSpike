@@ -13,7 +13,7 @@ namespace Registration.Adapters.DataContext
     {
         public RegistrationContext() : base("name=dbConnection")
         {
-
+            Database.SetInitializer<RegistrationContext>(new DropCreateDatabaseIfModelChanges<RegistrationContext>());
         }
 
         public DbSet<Registration> Registrations { get; set; }

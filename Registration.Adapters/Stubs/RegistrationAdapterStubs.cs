@@ -93,5 +93,31 @@ namespace Registration.Adapters.Stubs
                 }
             };
         }
+
+        public Result<Registration> UnRegister(string identityNumber)
+        {
+            if (identityNumber.ToLower().Trim() == "error")
+            {
+                return new Result<Registration> { ResultCode = ResultCode.Failure };
+            }
+
+            if (identityNumber.ToLower().Trim() == "notfound")
+            {
+                return new Result<Registration> { ResultCode = ResultCode.Undefined };
+            }
+
+            return new Result<Registration>
+            {
+                ResultCode = ResultCode.Success,
+                Data = new Registration
+                {
+                    Id = Guid.NewGuid(),
+                    IdentityNumber = "123456",
+                    Name = "John Doe",
+                    BirthDay = new DateTime(1991, 5, 6),
+                    Subscribed = true
+                }
+            };
+        }
     }
 }

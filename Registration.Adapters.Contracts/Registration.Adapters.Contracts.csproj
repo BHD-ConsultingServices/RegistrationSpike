@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICommunicationAdapter.cs" />
+    <Compile Include="ICommunicationTemplates.cs" />
     <Compile Include="IRegistrationAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

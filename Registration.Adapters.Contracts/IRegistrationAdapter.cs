@@ -13,5 +13,7 @@ namespace Registration.Adapters.Contracts
         Result<Registration> GetRegisteredUser(string identityNumber);
 
         Result<Registration> Unsubscribe(string identityNumber);
+
+        Result<Registration> UnRegister(string identityNumber);
     }
 }

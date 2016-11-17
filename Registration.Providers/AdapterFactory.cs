@@ -17,5 +17,15 @@ namespace Registration.Providers
 
             return new RegistrationAdapter();
         }
+
+        public static ICommunicationAdapter CreateComminucationAdapterInstance()
+        {
+            return new CommunicationAdapter();
+        }
+
+        public static ICommunicationTemplates CreateComminucationtemplatesInstance()
+        {
+            return new CommunicationTemplates();
+        }
     }
 }

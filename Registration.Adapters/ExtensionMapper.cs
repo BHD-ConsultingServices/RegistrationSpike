@@ -18,6 +18,7 @@ namespace Registration.Adapters
                 IdentityNumber = original.IdentityNumber,
                 Name = original.Name,
                 BirthDay = original.BirthDay,
+                EmailAddress = original.EmailAddress,
                 Subscribed = original.Subscribed
             };
         }
