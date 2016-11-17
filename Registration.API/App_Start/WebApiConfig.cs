@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Registration.API.Properties;
 
 namespace Registration.API
 {
@@ -19,6 +23,11 @@ namespace Registration.API
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
+
+            var cors = new EnableCorsAttribute(Settings.Default.BaseWebUrl, "*", "GET,POST,DELETE,OPTIONS");
+            config.EnableCors(cors);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

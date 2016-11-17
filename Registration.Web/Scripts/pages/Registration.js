@@ -103,17 +103,17 @@ site.pageFactory = function (initialData) {
       
         var unRegister = function (parameters, onSuccess) {
             var url = links.unRegisterLink + parameters.identityNumber;
-            site.ajax.ajaxPost({}, url, onSuccess);
+            site.ajax.ajaxGet({}, url, onSuccess);
         }
 
         var unSubscribe = function (parameters, onSuccess) {
             var url = links.unSubscribe + parameters.identityNumber;
-            site.ajax.ajaxPost({}, url, onSuccess);
+            site.ajax.ajaxGet({}, url, onSuccess);
         }
 
         var getRegisteredState = function (parameters, onSuccess) {
             var url = links.getRegisteredStatus + parameters.identityNumber;
-            site.ajax.ajaxPost({}, url, onSuccess);
+            site.ajax.ajaxGet({}, url, onSuccess);
         }
 
         return {

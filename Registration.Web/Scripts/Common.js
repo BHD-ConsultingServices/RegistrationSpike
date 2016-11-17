@@ -122,7 +122,7 @@ site.ajax = function () {
                 success: successCallback,
                 error: errorCallback,
                 dataType: "json",
-                contentType: "application/json' charset=utf-8"
+                contentType: "application/json;charset=utf-8"
             }
         );
     };
@@ -136,9 +136,12 @@ site.ajax = function () {
             url: url,
             data: JSON.stringify(data),
             success: successCallback,
+            /* xhrFields: {
+                withCredentials: true
+            }, */
             error: errorCallback,
             dataType: "json",
-            contentType: "application/json' charset=utf-8"
+            contentType: "application/json;charset=utf-8"
         });
     };
 
